@@ -17,9 +17,9 @@ public class CustomerController {
     @Autowired
     private CustomerRepository cRepo;
 
-    @GetMapping("/showCustomer")
-    public ModelAndView showCustomer(){
-        ModelAndView mav = new ModelAndView("list-customer");
+    @GetMapping("/showCustomers")
+    public ModelAndView showCustomers(){
+        ModelAndView mav = new ModelAndView("list-customers");
         List<Customer> list = cRepo.findAll();
         mav.addObject("customer", list);
         return mav;
@@ -42,7 +42,7 @@ public class CustomerController {
     @GetMapping("/showUpdateForm")
     public ModelAndView showUpdateForm(@RequestParam Long customerId){
         ModelAndView mav = new ModelAndView("add-customer-form");
-        Customer customer = cRepo.findById(customerId),get();
+        Customer customer = cRepo.findById(customerId).get();
         mav.addObject("customer", customer);
         return mav;
     }
