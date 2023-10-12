@@ -12,7 +12,7 @@
     <div class="container">
         <h2>F&uuml;gen sie einen neuen Kunden hinzu.</h2>
         <hr/>
-        <form>
+        <form th:action="@{/saveCustomer}" th:object="${customer}" methode="POST">
             <input type="text" th:field="*{name}" placeholder="Namen angeben" class="form-control col-4 mb-4" />
             <input type="text" th:field="*{email}" placeholder="Email angeben" class="form-control col-4 mb-4" />
             <input type="text" th:field="*{rent}" placeholder="Was wird ausgeliehen?" class="form-control col-4 mb-4" />
@@ -20,7 +20,7 @@
             <input type="hidden" th:field="*{id}" />
         </form>
         <hr/>
-        <a th:href="@{/showCustomer"}>Zur&uuml;ck zur Kundenliste</a>
+        <a th:href="@{/showCustomers}">Zur&uuml;ck zur Kundenliste</a>
     </div>
 
 </body>

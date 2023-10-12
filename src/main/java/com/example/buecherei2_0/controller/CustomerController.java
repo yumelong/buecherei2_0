@@ -19,24 +19,24 @@ public class CustomerController {
 
     @GetMapping("/showCustomers")
     public ModelAndView showCustomers(){
-        ModelAndView mav = new ModelAndView("list-customers");
+        ModelAndView mav = new ModelAndView("list-customer");
         List<Customer> list = cRepo.findAll();
         mav.addObject("customer", list);
         return mav;
     }
 
-    @GetMapping("/addCustomer")
+    @GetMapping("/addCustomerForm")
     public ModelAndView addCustomerForm(){
         ModelAndView mav = new ModelAndView("add-customer-form");
         Customer newCustomer = new Customer();
-        mav.addObject("cusomer", newCustomer);
+        mav.addObject("customer", newCustomer);
         return mav;
     }
 
     @GetMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute Customer customer){
         cRepo.save(customer);
-        return "redirect:/showCustomer";
+        return "redirect:/showCustomers";
     }
 
     @GetMapping("/showUpdateForm")
